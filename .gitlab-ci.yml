@@ -8,8 +8,14 @@ build_job:
   stage: build
   script:
     - npm install
+  artifacts:
+    paths:
+      - node_modules
 
 test_job:
   stage: test
   script:
     - npm test
+  dependencies:
+    - build_job
+
