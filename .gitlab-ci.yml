@@ -15,6 +15,7 @@ build_job:
 test_job:
   stage: test
   script:
+    - npm install
     - npm test
   dependencies:
     - build_job
