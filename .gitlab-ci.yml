@@ -15,6 +15,9 @@ build_job:
 test_job:
   stage: test
   script:
+    - npm install -g jest
+    - npm install --save-dev @babel/preset-env
+    - npm install --save-dev @babel/preset-typescript
     - npm test
   dependencies:
     - build_job
