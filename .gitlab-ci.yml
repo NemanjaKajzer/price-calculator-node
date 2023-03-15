@@ -1,0 +1,15 @@
+image: node:latest
+
+stages:
+  - build
+  - test
+
+build_job:
+  stage: build
+  script:
+    - npm install
+
+test_job:
+  stage: test
+  script:
+    - npm test
