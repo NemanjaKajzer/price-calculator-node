@@ -1,0 +1,23 @@
+{
+  "name": "price-calculator",
+  "version": "1.0.0",
+  "description": "npm package for price calculation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.vegaitsourcing.rs/n.kajzer/price-calculator.git"
+  },
+  "keywords": [
+    "nodejs",
+    "npm",
+    "demo",
+    "product",
+    "price",
+    "calculator"
+  ],
+  "author": "n.kajzer@vegait.rs",
+  "license": "ISC"
+}
