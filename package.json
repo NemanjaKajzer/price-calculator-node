@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "npm package for price calculation",
   "main": "index.js",
+  "publishConfig": {
+    "@n.kajzer:registry": "https://git.vegaitsourcing.rs/api/v4/projects/4057/packages/npm/"
+  },
   "scripts": {
     "test": "jest"
   },
