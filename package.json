@@ -1,5 +1,5 @@
 {
-  "name": "price-calculator",
+  "name": "@n.kajzer/price-calculator",
   "version": "1.0.0",
   "description": "npm package for price calculation",
   "main": "index.js",
