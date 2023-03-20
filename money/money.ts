@@ -8,7 +8,7 @@ export class Money {
     }
 
     multiply(percentage: Percentage): Money {
-        var res = Math.round(((percentage.value * this.amount) + Number.EPSILON) * 100) / 100;
+        const res = Math.round(((percentage.value * this.amount) + Number.EPSILON) * 100) / 100;
         return new Money(res);
     }
 

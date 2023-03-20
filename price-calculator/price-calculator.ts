@@ -12,9 +12,9 @@ export class PriceCalculator {
     }
 
     calculate(product: Product): PriceReport {
-        var price = product.price;
-        var taxTotal = this.tax.applyTax(price);
-        var total = price.add(taxTotal);
+        const price = product.price;
+        const taxTotal = this.tax.applyTax(price);
+        const total = price.add(taxTotal);
         return new PriceReport(price, taxTotal, total);
     }
 }

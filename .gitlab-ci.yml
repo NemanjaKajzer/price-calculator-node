@@ -1,5 +1,9 @@
 image: node:latest
 
+cache:
+  paths:
+    - node_modules
+
 stages:
   - build
   - test
@@ -8,20 +12,12 @@ stages:
 build_job:
   stage: build
   script:
-    - npm install
-  artifacts:
-    paths:
-      - node_modules
+    - npm ci
 
 test_job:
   stage: test
   script:
-    - npm install -g jest
-    - npm install --save-dev @babel/preset-env
-    - npm install --save-dev @babel/preset-typescript
-    - npm test
-  dependencies:
-    - build_job
+    - npm run test:ci
 
 deploy:
   stage: deploy
