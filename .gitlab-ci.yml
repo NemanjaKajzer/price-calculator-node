@@ -17,7 +17,7 @@ build_job:
 test_job:
   stage: test
   script:
-    - npm run test:ci
+    - npm run test
 
 deploy:
   stage: deploy
