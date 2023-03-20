@@ -6,7 +6,7 @@ cache:
     - node_modules/
 
 before_script:
-  - npm ci --cache .npm --prefer-offline
+  - npm ci --cache node_modules --prefer-offline
 
 stages:
   - build
@@ -17,6 +17,7 @@ build_job:
   stage: build
   script:
     - npm install
+    - npm run test
 
 test_job:
   stage: test
