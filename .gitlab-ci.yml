@@ -5,9 +5,6 @@ cache:
   paths:
     - node_modules/
 
-before_script:
-  - npm ci --cache node_modules --prefer-offline
-
 stages:
   - build
   - test
@@ -17,13 +14,10 @@ build_job:
   stage: build
   script:
     - npm install
-    - npm run test
 
 test_job:
   stage: test
   script:
-    - echo 
-    - npm install
     - npm run test
 
 deploy:
