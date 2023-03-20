@@ -1,8 +1,12 @@
 image: node:latest
 
 cache:
+  key: $CI_COMMIT_REF_SLUG
   paths:
-    - node_modules
+    - node_modules/
+
+before_script:
+  - npm ci --cache .npm --prefer-offline
 
 stages:
   - build
@@ -12,12 +16,14 @@ stages:
 build_job:
   stage: build
   script:
-    - npm ci
+    - npm install
 
 test_job:
   stage: test
   script:
-    - npm run test:ci
+    - echo 
+    - npm install
+    - npm run test
 
 deploy:
   stage: deploy
