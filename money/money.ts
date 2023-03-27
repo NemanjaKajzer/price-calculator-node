@@ -8,18 +8,20 @@ export class Money {
     }
 
     multiply(percentage: Percentage): Money {
-        const res = Math.round(((percentage.value * this.amount) + Number.EPSILON) * 100) / 100;
+        const res = percentage.value * 100 * this.amount * 100 / 10000;
         return new Money(res);
     }
 
     add(...moneys: Money[]): Money {
-        const res = this.amount + moneys.reduce((acc, input) => acc + input.amount, 0);
-        return new Money(Math.round((res + Number.EPSILON) * 100) / 100);
+        const totalCentsToAdd = moneys.reduce((acc, input) => acc + input.amount, 0) * 100;
+        const res = (this.amount * 100 + totalCentsToAdd) / 100;
+        return new Money(res);
     }
 
     subtract(...moneys: Money[]): Money {
-        const res = this.amount - moneys.reduce((acc, input) => acc + input.amount, 0);
-        return new Money(Math.round((res + Number.EPSILON) * 100) / 100);
+        const totalCentsToSubtract = moneys.reduce((acc, input) => acc + input.amount, 0) * 100;
+        const res = (this.amount * 100 - totalCentsToSubtract) / 100;
+        return new Money(res);
     }
 
     toString(): string {
