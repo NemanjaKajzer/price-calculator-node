@@ -1,10 +1,13 @@
 {
-  "name": "price-calculator",
+  "name": "@n.kajzer/price-calculator",
   "version": "1.0.0",
   "description": "npm package for price calculation",
   "main": "index.js",
+  "publishConfig": {
+    "@n.kajzer:registry": "https://git.vegaitsourcing.rs/api/v4/projects/4057/packages/npm/"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,5 +22,13 @@
     "calculator"
   ],
   "author": "n.kajzer@vegait.rs",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.5.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.21.0",
+    "@types/jest": "^29.5.0"
+  }
 }
