@@ -24,6 +24,10 @@ export class Money {
         return new Money(res);
     }
 
+    equals(value: number): boolean {
+        return this.amount === value;
+    }
+
     toString(): string {
         return `$${this.amount.toFixed(2)}`;
     }
