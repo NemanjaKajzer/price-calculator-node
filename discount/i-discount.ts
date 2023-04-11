@@ -5,4 +5,5 @@ export interface IDiscount {
     percentage: Percentage;
 
     applyDiscount(price: Money): Money;
+    isApplicable(upc: string): boolean;
 }
