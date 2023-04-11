@@ -24,7 +24,7 @@ test('When price and tax specified, custom tax should be applied', () => {
     price: new Money(20.25)
   };
 
-  const tax = new Tax(new Percentage(0.21));
+  const tax = new Tax(0.21);
 
   const calculator = new PriceCalculator()
     .withTax(tax);
