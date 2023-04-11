@@ -12,7 +12,7 @@ test('When only discount specified, default tax and discount should be applied',
 
     const discount = new Discount(0.15);
     const calculator = new PriceCalculator();
-    const report = calculator.withDiscount(discount)
+    const report = calculator.withDiscountAfterTax(discount)
         .calculate(product);
 
     expect(report.total.toString()).toBe("$21.26");

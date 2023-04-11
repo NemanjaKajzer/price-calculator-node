@@ -16,8 +16,8 @@ test('When a selective discount with valid UPC is specified, it should be applie
     const selectiveDiscount = new SelectiveDiscount(0.07, '12345');
 
     const calculator = new PriceCalculator();
-    const report = calculator.withDiscount(discount)
-        .withDiscount(selectiveDiscount)
+    const report = calculator.withDiscountAfterTax(discount)
+        .withDiscountAfterTax(selectiveDiscount)
         .calculate(product);
 
     const expectedString = `Cost = $20.25\n` +
@@ -41,8 +41,8 @@ test('When a selective discount with invalid UPC is specified, it should be igno
 
     const calculator = new PriceCalculator();
     const report = calculator.withTax(tax)
-        .withDiscount(discount)
-        .withDiscount(selectiveDiscount)
+        .withDiscountAfterTax(discount)
+        .withDiscountAfterTax(selectiveDiscount)
         .calculate(product);
 
     const expectedString = `Cost = $20.25\n` +
