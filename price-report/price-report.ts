@@ -14,10 +14,10 @@ export class PriceReport {
     }
 
     toString(): string {
-        return `Price = ${this.price}\n` +
+        return `Cost = ${this.price}\n` +
             `Tax = ${this.taxTotal}\n` +
-            (this.discountTotal.equals(0) ? '' : `Discount = ${this.discountTotal}\n`) +
-            `Total = ${this.total}`;
+            (this.discountTotal.equals(0) ? '' : `Discounts = ${this.discountTotal}\n`) +
+            `TOTAL = ${this.total}`;
     }
 
 }
