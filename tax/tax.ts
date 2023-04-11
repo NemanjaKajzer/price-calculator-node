@@ -5,8 +5,8 @@ import { ITax } from "./i-tax";
 export class Tax implements ITax {
     percentage: Percentage;
 
-    constructor(percentage: Percentage) {
-        this.percentage = percentage;
+    constructor(percentage: number) {
+        this.percentage = new Percentage(percentage);
     }
 
     applyTax(price: Money): Money {
