@@ -1,0 +1,32 @@
+image: node:latest
+
+cache:
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - test
+  - deploy
+
+build_job:
+  stage: build
+  script:
+    - npm ci
+
+test_job:
+  stage: test
+  script:
+    - npm run test
+
+deploy:
+  stage: deploy
+  script:
+    - echo "//${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=$NPM_ACCESS_TOKEN">.npmrc
+    - npm publish
+  only:
+    refs:
+      - master
+
+
