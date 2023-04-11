@@ -14,13 +14,13 @@ export class Money {
 
     add(...moneys: Money[]): Money {
         const totalCentsToAdd = moneys.reduce((acc, input) => acc + input.amount, 0) * 100;
-        const res = (this.amount * 100 + totalCentsToAdd) / 100;
+        const res = Math.round(this.amount * 100 + totalCentsToAdd) / 100;
         return new Money(res);
     }
 
     subtract(...moneys: Money[]): Money {
         const totalCentsToSubtract = moneys.reduce((acc, input) => acc + input.amount, 0) * 100;
-        const res = (this.amount * 100 - totalCentsToSubtract) / 100;
+        const res = Math.round(this.amount * 100 - totalCentsToSubtract) / 100;
         return new Money(res);
     }
 

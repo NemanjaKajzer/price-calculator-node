@@ -12,7 +12,7 @@ test('When a discount is applied, display a message which reports the discounted
 
     const discount = new Discount(0.15);
     const calculator = new PriceCalculator();
-    const report = calculator.withDiscount(discount)
+    const report = calculator.withDiscountAfterTax(discount)
         .calculate(product);
 
     const expectedString = `Cost = $20.25\n` +
