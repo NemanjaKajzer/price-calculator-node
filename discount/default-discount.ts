@@ -8,4 +8,8 @@ export class DefaultDiscount implements IDiscount {
     applyDiscount(price: Money): Money {
         return new Money(0);
     }
+
+    isApplicable(upc: string): boolean {
+        return true;
+    }
 }

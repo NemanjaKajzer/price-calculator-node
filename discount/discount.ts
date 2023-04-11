@@ -12,4 +12,8 @@ export class Discount implements IDiscount {
     applyDiscount(price: Money): Money {
         return price.multiply(this.percentage);
     }
+
+    isApplicable(upc: string): boolean {
+        return true;
+    }
 }
