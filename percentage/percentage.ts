@@ -4,4 +4,8 @@ export class Percentage {
     constructor(value: number){
         this.value = value;
     }
+
+    equals(value: number): boolean {
+        return value === this.value;
+    }
 }

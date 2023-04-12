@@ -28,6 +28,22 @@ export class Money {
         return this.amount === value;
     }
 
+    gte(money: Money): boolean {
+        return this.amount >= money.amount;
+    }
+
+    lte(money: Money): boolean {
+        return this.amount <= money.amount;
+    }
+
+    gt(money: Money): boolean {
+        return this.amount > money.amount;
+    }
+
+    lt(money: Money): boolean {
+        return this.amount < money.amount;
+    }
+
     toString(): string {
         return `$${this.amount.toFixed(2)}`;
     }

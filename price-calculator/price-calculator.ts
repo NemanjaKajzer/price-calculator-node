@@ -10,6 +10,8 @@ import { AbsoluteExpense } from "../expense/absolute-expense";
 import { IDiscountCalculator } from "../discount-calculator/i-discount-calculator";
 import { AdditiveDiscountCalculator } from "../discount-calculator/additive-discount-calculator";
 import { MultiplicativeDiscountCalculator } from "../discount-calculator/multiplicative-discount-calculator";
+import { ICap } from "../cap/i-cap";
+import { AbsoluteCap } from "../cap/absolute-cap";
 
 export class PriceCalculator {
     tax: ITax = new DefaultTax();
@@ -17,6 +19,7 @@ export class PriceCalculator {
     discountsAfterTax: IDiscount[] = [new DefaultDiscount()];
     expenses: IExpense[] = [];
     discountCalculator: IDiscountCalculator = new AdditiveDiscountCalculator();
+    cap: ICap = new AbsoluteCap(0);
 
     withTax(tax: ITax): PriceCalculator {
         this.tax = tax;
@@ -38,10 +41,15 @@ export class PriceCalculator {
         return this;
     }
 
-    withMultiplicativeDiscounts() {
+    withMultiplicativeDiscounts(): PriceCalculator {
         this.discountCalculator = new MultiplicativeDiscountCalculator();
         return this;
     }
+
+    withCap(cap: ICap): PriceCalculator {
+        this.cap = cap;
+        return this;
+    } 
 
     calculate(product: Product): PriceReport {
         const price = product.price;
@@ -56,6 +64,8 @@ export class PriceCalculator {
         
         const expensesTotal = this.expenses.reduce((sum, current) => sum.add(current.applyExpense(price)), new Money(0))
         const appliedExpenses = this.expenses.map(x => new AbsoluteExpense(x.applyExpense(price), x.description));
+
+        discountTotal = this.cap.applyCap(discountTotal, price);
 
         const total = price.add(taxTotal).subtract(discountTotal).add(expensesTotal);
         return new PriceReport(price, taxTotal, total, discountTotal, appliedExpenses);
